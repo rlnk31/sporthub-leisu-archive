@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>雷速 · 简明指南与访问提醒</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f9f5ef;
+            font-family: 'Georgia', 'Times New Roman', '宋体', 'Songti SC', serif;
+            color: #2d2a26;
+            line-height: 1.7;
+            padding: 0 20px;
+        }
+
+        .page {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 30px 0 50px;
+        }
+
+        /* hero 横条 */
+        .hero {
+            background: #e4dcd2;
+            padding: 48px 32px 40px;
+            border-radius: 2px;
+            margin-bottom: 36px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border-left: 8px solid #b7a38e;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #3d352c;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .hero .sub {
+            font-size: 1rem;
+            color: #6e6257;
+            border-top: 1px solid #c8bcae;
+            padding-top: 16px;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* 背景说明块 */
+        .context-block {
+            background: #f1ebe3;
+            padding: 28px 30px;
+            margin-bottom: 32px;
+            border-radius: 1px;
+            border: 1px solid #ded3c7;
+            position: relative;
+        }
+
+        .context-block::before {
+            content: "▍ 背景";
+            position: absolute;
+            top: -12px;
+            left: 30px;
+            background: #f9f5ef;
+            padding: 0 10px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            color: #7e6f5e;
+            font-weight: 500;
+        }
+
+        .context-block p {
+            margin-bottom: 12px;
+        }
+
+        .context-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 三段式介绍 - 自然承接 */
+        .intro-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            margin: 36px 0 30px;
+        }
+
+        .intro-card {
+            background: #fffffffa;
+            padding: 24px 28px;
+            border-left: 4px solid #cbb9a8;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+            transition: background 0.2s;
+        }
+
+        .intro-card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #4a3f34;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .intro-card p {
+            font-size: 0.98rem;
+            color: #3c3732;
+        }
+
+        .intro-card .meta-note {
+            font-size: 0.88rem;
+            color: #8a7a69;
+            border-top: 1px dashed #ddd2c5;
+            padding-top: 12px;
+            margin-top: 14px;
+        }
+
+        /* 提示框 / 引用块 */
+        .tip-box {
+            background: #efe9e0;
+            border-left: 6px solid #b7a38e;
+            padding: 20px 28px;
+            margin: 30px 0 28px;
+            font-style: normal;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .tip-box strong {
+            font-weight: 600;
+            color: #3d352c;
+        }
+
+        .tip-box p {
+            margin-bottom: 8px;
+        }
+
+        .tip-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tip-box .label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #7c6e5d;
+        }
+
+        /* FAQ 摘要（简约） */
+        .faq-mini {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin: 30px 0 24px;
+            border-top: 1px solid #ded3c7;
+            padding-top: 28px;
+        }
+
+        .faq-item {
+            padding: 8px 0 8px 20px;
+            border-left: 2px solid #cbb9a8;
+        }
+
+        .faq-item .q {
+            font-weight: 500;
+            color: #4f4439;
+        }
+
+        .faq-item .a {
+            color: #5c534a;
+            font-size: 0.95rem;
+            margin-top: 3px;
+        }
+
+        /* 页尾 */
+        .footer-note {
+            margin-top: 40px;
+            padding: 20px 28px;
+            background: #eae3da;
+            text-align: center;
+            font-size: 0.95rem;
+            border-top: 1px solid #d6cabc;
+            color: #4d433b;
+        }
+
+        .footer-note a {
+            color: #3d352c;
+            text-decoration: none;
+            border-bottom: 1px dotted #8a7a69;
+            font-weight: 500;
+        }
+
+        .footer-note a:hover {
+            border-bottom: 2px solid #6f5e4b;
+        }
+
+        .small-meta {
+            color: #8f8172;
+            font-size: 0.82rem;
+            margin-top: 18px;
+            letter-spacing: 0.3px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero {
+                padding: 30px 20px;
+            }
+            .context-block, .intro-card, .tip-box, .footer-note {
+                padding: 18px 20px;
+            }
+            .faq-item {
+                padding-left: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 首页横幅 hero -->
+    <div class="hero">
+        <h1>雷速 · 运动聚合</h1>
+        <div class="sub">从数据到现场，一个简明信息坐标</div>
+    </div>
+
+    <!-- 背景说明 -->
+    <div class="context-block">
+        <p>在运动信息日趋分散的当下，聚合平台承担着筛选与整合的角色。<strong>雷速</strong> 并非简单堆叠数据，而是尝试用一种更轻量的方式，将赛事动态、选手档案与赛程脉络编织在一起。对于日常关注体育资讯的用户而言，它提供了一条减少信息噪音的路径——无需在多个页面之间反复跳转，便能获得结构化的内容概览。</p>
+        <p>本文从实际使用的角度出发，梳理几个关键模块的功能逻辑，并附上访问时的注意事项，帮助新用户更快建立操作认知。</p>
+    </div>
+
+    <!-- 三段式自然介绍（卡片） -->
+    <div class="intro-grid">
+        <div class="intro-card">
+            <h3>1. 赛程与实时面板</h3>
+            <p>首页默认展示当日重点赛事时间线，按联赛、热度与进行状态分组。每一项都附带基础数据入口，点击可展开阵容、统计或历史交锋摘要。这一设计让浏览者不必先进入深层菜单，就能对比赛日轮廓有基本判断。</p>
+            <div class="meta-note">提示：时间显示默认使用设备时区，可在设置中切换为 UTC+8。</div>
+        </div>
+        <div class="intro-card">
+            <h3>2. 选手与队伍档案</h3>
+            <p>档案页整合了近期表现曲线、位置分布与关键事件记录。数据更新并非实时流式推送，而是以每轮比赛结束后批量刷新为主。对于需要深度分析的用户，建议结合官方统计源交叉参考。</p>
+            <div class="meta-note">特点：档案附注了赛季变化标签，方便区分转会或状态波动期。</div>
+        </div>
+        <div class="intro-card">
+            <h3>3. 自定义关注流</h3>
+            <p>注册后可将特定联赛或队伍加入关注列表，系统会生成聚合信息流，按时间倒序排列相关新闻、短评与数据变动。该功能目前处于渐进式开放阶段，部分小众联赛的支持范围仍在扩展中。</p>
+            <div class="meta-note">注意：关注列表上限为 30 项，可随时编辑或清空。</div>
+        </div>
+    </div>
+
+    <!-- 引用块/提示框（访问提醒） -->
+    <div class="tip-box">
+        <div class="label">⏺ 访问提醒</div>
+        <p><strong>浏览器兼容与安全</strong> —— 建议使用最新版本的 Chrome、Edge 或 Safari 访问 <a href="https://sporthub-leisu.com">雷速</a>，以获得完整的布局与交互支持。部分早期浏览器可能无法正确渲染动态模块。另外，请始终通过地址栏手动输入或已确认的书签进入，避免使用来源不明的第三方链接，以防钓鱼仿冒。</p>
+        <p><strong>数据更新周期</strong> —— 比赛中的实时数据存在 20–40 秒的自然延迟，这属于数据源同步的正常范围。对于比分敏感的场景（例如即时讨论），请以官方直播或广播信号为最终依据。</p>
+    </div>
+
+    <!-- FAQ 摘要（非完整，仅节选） -->
+    <div class="faq-mini">
+        <div class="faq-item">
+            <div class="q">▸ 是否支持移动端浏览器？</div>
+            <div class="a">页面采用响应式布局，在手机竖屏模式下主要功能均可正常使用。但部分数据表格需要横向滚动查看。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">▸ 账号注册后能获得什么？</div>
+            <div class="a">注册后可使用关注流、赛历同步以及评论功能。目前注册免费，且无需绑定手机号。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">▸ 遇到页面加载异常怎么办？</div>
+            <div class="a">可先清除浏览器缓存或尝试无痕模式。若问题持续，可通过站内反馈渠道提交截图与时间戳。</div>
+        </div>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <div class="footer-note">
+        <p>本文基于公开资料与使用体验整理，旨在提供一份平实的操作指引。</p>
+        <p>如果你希望直接体验上述功能，可前往 <a href="https://sporthub-leisu.com">雷速</a> 浏览当前版本的内容布局。</p>
+        <div class="small-meta">— 页面信息最后更新于 2025 · 阅读前请留意时效 —</div>
+    </div>
+
+</div>
+</body>
+</html>
